@@ -79,8 +79,8 @@ bool checkSetShip(int size_ship, int ship_dir, int x, int y){
 			break;
 
 		case 1:
-			if (size_ship==size_map-y || size_ship<=size_map-y) return false;
-			else  return true;
+			if (size_ship==size_map-y || size_ship<=size_map-y) return true;
+			else  return false;
 			break;
 
 		case 2:
