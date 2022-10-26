@@ -44,55 +44,28 @@ bool checkSetShip(int size_ship, int ship_dir, int x, int y);
 int attackShip(Ship* ship_count[10] ,int (*map)[10], int x, int y);
 
 int main(){
-	int x,y,ship_s,ship_d;
+	int x,y,ship_s,ship_d, ship_fas=1;
 	int wrecked_ships = 0; 
 	int map[size_map][size_map] = {0};
 
 	Ship* ship_count[10];
-	for(int i=0; i<4;i++){
+	for(int i=0; i<10;i++){
+		if (i==4) ship_fas=2;
+		if (i==7) ship_fas=3;
+		if (i==9) ship_fas=4;
+
+
 		printArea(size_map, map);
-		cout<<"Одно-палобный корабль"<<endl;
+		cout<<ship_fas<<"-палобный корабль"<<endl;
 		cout<<"Введи x "; cin >>x;
 		cout<<"Введи y "; cin >>y;
 		cout<<"Введи направление корабля от начало точки(0-вниз, 1-вправо, 2-вверх, 3-влево): "; cin >>ship_d;
-		Ship* s1 = new Ship(1, ship_d);
+		Ship* s1 = new Ship(ship_fas, ship_d);
 		setShip(s1,map,size_map,x,y);
 		ship_count[i] = s1;
 
 	}
-	for(int i=4; i<7;i++){
-		printArea(size_map, map);
-		cout<<"Двух-палобный корабль"<<endl;
-		cout<<"Введи x "; cin >>x;
-		cout<<"Введи y "; cin >>y;
-		cout<<"Введи направление корабля от начало точки(0-вниз, 1-вправо, 2-вверх, 3-влево): "; cin >>ship_d;
-		Ship* s1 = new Ship(2, ship_d);
-		setShip(s1,map,size_map,x,y);
-		ship_count[i] = s1;
-
-	}
-	for(int i=7; i<9;i++){
-		printArea(size_map, map);
-		cout<<"Трех-палобный корабль"<<endl;
-		cout<<"Введи x "; cin >>x;
-		cout<<"Введи y "; cin >>y;
-		cout<<"Введи направление корабля от начало точки(0-вниз, 1-вправо, 2-вверх, 3-влево): "; cin >>ship_d;
-		Ship* s1 = new Ship(3, ship_d);
-		setShip(s1,map,size_map,x,y);
-		ship_count[i] = s1;
-
-	}
-	for(int i=9; i<10;i++){
-		printArea(size_map, map);
-		cout<<"Четырех-палобный корабль"<<endl;
-		cout<<"Введи x "; cin >>x;
-		cout<<"Введи y "; cin >>y;
-		cout<<"Введи направление корабля от начало точки(0-вниз, 1-вправо, 2-вверх, 3-влево): "; cin >>ship_d;
-		Ship* s1 = new Ship(4, ship_d);
-		setShip(s1,map,size_map,x,y);
-		ship_count[i] = s1;
-
-	}
+	
 	printArea(size_map, map);
 
 	system("clear");
