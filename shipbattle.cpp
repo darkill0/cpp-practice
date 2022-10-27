@@ -141,7 +141,7 @@ bool setShip(Ship* ship, int(*map)[10], int size_map, int x, int y) {
 
 	bool flag = checkSetShip(ship->size_ship, ship->ship_dir, x, y);
 
-	if (map[x][y] == 1 || x < 0 || y < 0 || x >= size_map || y >= size_map || flag == false) {
+	if (map[x][y] == 1 || x < 0 || y < 0 || x >= size_map || y >= size_map || flag == false || map[x+1][y]==1 || map[x - 1][y] == 1 || map[x][y+1] == 1 || map[x][y - 1] == 1) {
 		cout << "Неправильные координаты" << endl;
 		return false;
 	}
